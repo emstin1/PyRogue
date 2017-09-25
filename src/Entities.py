@@ -1,19 +1,39 @@
+import Components
+import os
+import json
+
 class Entity:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
+    def __init__(self, **cmps):
+        self.__dict__.update(cmps)
+        self.components = cmps
 
-    def move_up(self):
-        self.y -= 1 
-    def move_down(self):
-        self.y += 1
-    def move_right(self):
-        self.x += 1
-    def move_left(self):
-        self.x -= 1
+    def add_component(self, **cmps):
+        self.__dict__.update(cmps)
+        self.components.update(cmps)
 
+    def get_components(self):
+        """returns a list of the component names"""
+        return list(self.components.keys())
 
-class Player(Entity):
-    def __init__(self, x, y):
-        Entity.__init__(self, x, y)
-        self.health = 10 
+def create_entity(entity_dict):
+    """creates entities from given params"""
+    entity = Entity()
+    if entity_dict['has movement']:
+        entity.add_component(movement=Components.ComponentMovement())
+    if entity_dict['has coordinates']:
+        entity.add_component(coordinates=Components.ComponentCoordinate())
+    if entity_dict['has rendering']:
+        entity.add_component(render=Components.ComponentRender())
+        entity.render.body = entity_dict['body']
+    if entity_dict['has input']:
+        entity.add_component(input=Components.ComponentInput())
+    if entity_dict['has collision']:
+        entity.add_component(collision=Components.ComponentCollision())
+    return entity
+
+def load_entity(entity_type, name):
+    """creates entity from coresponding entity file"""
+    f = os.path.join('content', entity_type, "{}.json".format(name))
+    with open(f, 'r') as entity_file:
+        entity = entity_file.read()
+    return json.loads(entity)

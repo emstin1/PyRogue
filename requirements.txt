@@ -1,4 +1,5 @@
 asciimatics==1.8.0
+bearlibterminal==0.15.2
 future==0.16.0
 olefile==0.44
 Pillow==4.1.1
