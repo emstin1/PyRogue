@@ -1,9 +1,0 @@
-__pycache__/
-*.pyc
-bin/
-include/
-lib64/
-lib/
-share/	
-pip-selfcheck.json
-pyvenv.cfg
