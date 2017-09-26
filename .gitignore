@@ -2,8 +2,8 @@ __pycache__/
 *.pyc
 bin/
 include/
-lib64/
+lib64
 lib/
-share/	
+share/python-wheels
 pip-selfcheck.json
 pyvenv.cfg
