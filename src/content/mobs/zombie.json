@@ -1,0 +1,11 @@
+{
+
+    "has coordinates": true,
+    "has movement"   : false,
+    "has collision"  : false,
+    "has rendering"  : false,
+    "has input"      : false,
+    "has ai"         : false,
+    "body"           : "[color=green]z"
+
+}
