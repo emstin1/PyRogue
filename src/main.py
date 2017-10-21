@@ -4,7 +4,7 @@ from View import View
 from Engine import Engine
 from Components import *
 
-cave = CaveRoom(1000, 1000, "this is a seed", 1)
+cave = CaveRoom(1000, 1000, "this is a seed", 2)
 cave.carve_cave(1)
 player = Entities.create_entity( Entities.load_entity('mobs', 'player'))
 player.coordinates.x = 10

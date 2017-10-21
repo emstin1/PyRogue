@@ -3,6 +3,8 @@ from enum import Enum
 class GenericTerrain(Enum):
     FLOOR = '[bkcolor=black] '
     WALL = '[color=grey][bkcolor=grey]#'
+    FONT_FLOOR = ' '
+    FONT_WALL = '#'
 
 class ForestTerrain(Enum):
     TREE  =  '[color=green]T'

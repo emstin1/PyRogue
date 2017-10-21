@@ -1,5 +1,7 @@
 """This is the main engine class.  Handles turns, drawing and user input"""
 
+#TODO Separate this giant class into seperate subclasses for composition into the larger Engine class
+
 class Engine:
     from bearlibterminal import terminal
     from sys import exit

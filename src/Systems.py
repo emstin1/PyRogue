@@ -1,4 +1,4 @@
-#The System part of our Entity-Component-System
+#The System part of the Entity-Component-System
 
 class MovementSystem:
     def __init__(self):
