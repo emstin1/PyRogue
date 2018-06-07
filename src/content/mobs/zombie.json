@@ -1,11 +1,13 @@
 {
 
-    "has coordinates": true,
+    "has coordinates": false,
     "has movement"   : false,
     "has collision"  : false,
     "has rendering"  : false,
     "has input"      : false,
+    "has inventory"  : false,
     "has ai"         : false,
-    "body"           : "[color=green]z"
+    "has vision"     : false,
+    "body"           : "null"
 
 }

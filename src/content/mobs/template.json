@@ -7,7 +7,7 @@
     "has input"      : false,
     "has inventory"  : false,
     "has ai"         : false,
+    "has vision"     : false,
     "body"           : "null"
-    "has vision"     : "false"`
 
 }
