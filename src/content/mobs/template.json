@@ -8,5 +8,6 @@
     "has inventory"  : false,
     "has ai"         : false,
     "body"           : "null"
+    "has vision"     : "false"`
 
 }

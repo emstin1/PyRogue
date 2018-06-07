@@ -7,6 +7,7 @@
     "has input"      : true,
     "has inventory"  : true,
     "has ai"         : false,
-    "body"           : "[color=white]@"
+    "body"           : "[color=white]@",
+    "has vision"     : true
 
 }

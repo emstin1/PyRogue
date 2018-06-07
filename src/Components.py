@@ -30,3 +30,6 @@ class ComponentAI:
 
 
 
+class ComponentFOV:
+    #TODO: Field of View Component
+    pass

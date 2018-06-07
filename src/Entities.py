@@ -29,6 +29,8 @@ def create_entity(entity_dict):
         entity.add_component(input=Components.ComponentInput())
     if entity_dict['has collision']:
         entity.add_component(collision=Components.ComponentCollision())
+    if entity_dict['has vision']:
+        entity.add_component(vision=Components.ComponentFOV())
     return entity
 
 def load_entity(entity_type, name):
