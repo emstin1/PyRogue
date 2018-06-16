@@ -7,3 +7,4 @@ lib/
 share/python-wheels
 pip-selfcheck.json
 pyvenv.cfg
+pylinting.txt
