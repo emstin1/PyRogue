@@ -32,4 +32,5 @@ class ComponentAI:
 
 class ComponentFOV:
     #TODO: Field of View Component
-    pass
+    vision = True
+    los_distance = 0 

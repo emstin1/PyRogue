@@ -49,3 +49,14 @@ class CollisionSystem:
         elif entity.movement.move_right:
             if current_room[(entity.coordinates.x + 1, entity.coordinates.y)] == self.GenericTerrain.WALL.value:
                 entity.movement.move_right = False
+
+class VisionSystem:
+    from Terrain import GenericTerrain
+    from Primitives import Line
+    
+    def __init__(self):
+        self.entities = [] 
+
+    def raycast(self, current_room, entity):
+        origin_x = entity.coordinates.x
+        origin_y = entity.coordinates.y
