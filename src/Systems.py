@@ -52,11 +52,20 @@ class CollisionSystem:
 
 class VisionSystem:
     from Terrain import GenericTerrain
-    from Primitives import Line
+    from Primitives import Shapes
     
     def __init__(self):
         self.entities = [] 
 
-    def raycast(self, current_room, entity):
-        origin_x = entity.coordinates.x
-        origin_y = entity.coordinates.y
+    def vision_circle(self, entity):
+        """generates each point in the vision circle of the entity.  Does not check for blocked vision"""
+        entity.vision.vision_circle = Shapes.filled_circle(entity.coordinates.x, entity.coordinates.y, entity.vision.los_distance)
+
+    def check_blocked_vision(self, entityi, room):
+        """checks each ray in the vision circle for vision-blocking points"""
+        for ray in entity.vision.vision_circle:
+            for point in ray:
+                if room[point] == GenericTerrain.WALL.value:
+                    break
+                else:
+                    entity.vision.visible_cells.append(point)

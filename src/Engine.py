@@ -22,6 +22,7 @@ class Engine:
         self.current_state = self.States.START
         self.movement_system = self.Systems.MovementSystem()
         self.collision_system = self.Systems.CollisionSystem()
+        self.vision_system = self.Systems.VisionSystem()
         self.current_screen = None
 
     def sort_entities(self):
@@ -31,6 +32,8 @@ class Engine:
                 self.movement_system.entities.append(entity)
             if self.has_component(entity, 'collision'):
                 self.collision_system.entities.append(entity)
+            if self.has_component(entity, 'vision'):
+                self.vision_system.entities.append(entity)
 
     def move(self, entity):
         """processes any movement by entities"""

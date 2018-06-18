@@ -30,14 +30,11 @@ def get_circle(origin_x, origin_y, radius):
 def filled_circle(origin_x, origin_y, radius):
     """filled_circle(origin_x, origin_y, radius)"""
     perimeter = get_circle(origin_x, origin_y, radius)
-    center = (origin_x, origin_y)
     points = []
-    points.append(center)
 
-    for p in perimeter:
-        for point in Line.get_line(origin_x, origin_y, p[0], p[1]):
-            if point != center:
-                points.append(point)
+    for point in perimeter:
+        line = Line.get_line(origin_x, origin_y, point[0], point[1])
+        points.append(line)
     return points
 
 def get_rect(length, width, origin_x, origin_y):
