@@ -67,7 +67,8 @@ class VisionSystem:
             for point in ray:
                 try:
                     if room[point] == self.GenericTerrain.WALL.value:
+                        entity.vision.visible_cells.append(point)
                         break
                     else:
                         entity.vision.visible_cells.append(point)
-                except KeyError: pass
+                except KeyError: entity.vision.visible_cells.append(point)

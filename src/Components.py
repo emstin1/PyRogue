@@ -34,6 +34,6 @@ class ComponentFOV:
     """Entity with FOV can see stuff around it"""
     #TODO: Field of View Component
     vision = True
-    los_distance = 10
+    los_distance = 17
     vision_circle = []
     visible_cells = []

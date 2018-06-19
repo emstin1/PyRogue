@@ -63,6 +63,7 @@ class Engine:
         for entity in self.vision_system.entities:
             self.fov(entity)
         self.view.set_view(self.player.coordinates.x, self.player.coordinates.y, self.player.vision.visible_cells)
+        self.player.vision.visible_cells = []
         self.set_state(self.States.DRAW)
 
 
