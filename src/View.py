@@ -16,10 +16,9 @@ class View:
             for x in range(self.width):
                 current_cell = (view_x + x, view_y + y)
                 try:
-                    if current_cell is in player_view:
+                    if current_cell in player_view:
                         cell = self.current_room.room[current_cell]
-                    else:
-                        cell = self.GenericTerrain.FLOOR.value
+                    else: cell = self.GenericTerrain.FLOOR.value
                 except KeyError:
                     self.current_room.room[(view_x + x, view_y + y)] = self.GenericTerrain.WALL.value
                     cell = self.current_room.room[current_cell]

@@ -24,7 +24,7 @@ with open('view-debug.txt', 'w') as viewdb:
 
 """
 view = View(cave.room)
-view.set_view(player.coordinates.x, player.coordinates.y)
+view.set_view(player.coordinates.x, player.coordinates.y, player.vision.visible_cells)
 
 
 engine = Engine(player, view)

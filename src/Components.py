@@ -35,5 +35,5 @@ class ComponentFOV:
     #TODO: Field of View Component
     vision = True
     los_distance = 10
-    vision_circle = None
-    visibile_cells = []
+    vision_circle = []
+    visible_cells = []

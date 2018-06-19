@@ -59,13 +59,15 @@ class VisionSystem:
 
     def vision_circle(self, entity):
         """generates each point in the vision circle of the entity.  Does not check for blocked vision"""
-        entity.vision.vision_circle = Shapes.filled_circle(entity.coordinates.x, entity.coordinates.y, entity.vision.los_distance)
+        entity.vision.vision_circle = self.Shapes.filled_circle(entity.coordinates.x, entity.coordinates.y, entity.vision.los_distance)
 
-    def check_blocked_vision(self, entityi, room):
+    def check_blocked_vision(self, entity, room):
         """checks each ray in the vision circle for vision-blocking points"""
         for ray in entity.vision.vision_circle:
             for point in ray:
-                if room[point] == GenericTerrain.WALL.value:
-                    break
-                else:
-                    entity.vision.visible_cells.append(point)
+                try:
+                    if room[point] == self.GenericTerrain.WALL.value:
+                        break
+                    else:
+                        entity.vision.visible_cells.append(point)
+                except KeyError: pass

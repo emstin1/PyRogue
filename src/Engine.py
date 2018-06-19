@@ -41,6 +41,10 @@ class Engine:
             if self.has_component(entity, "coordinates"):
                 self.movement_system.move_entity(entity)
 
+    def fov(self, entity):
+        if self.has_component(entity, 'vision'):
+            self.vision_system.vision_circle(entity)
+            self.vision_system.check_blocked_vision(entity, self.view.current_room.room)
 
     def has_component(self, entity, component):
         return component in entity.get_components()
@@ -56,7 +60,9 @@ class Engine:
             self.collision_system.check_collision(self.view.current_room.room, entity)
         for entity in self.movement_system.entities:
             self.move(entity)
-        self.view.set_view(self.player.coordinates.x, self.player.coordinates.y)
+        for entity in self.vision_system.entities:
+            self.fov(entity)
+        self.view.set_view(self.player.coordinates.x, self.player.coordinates.y, self.player.vision.visible_cells)
         self.set_state(self.States.DRAW)
 
 
