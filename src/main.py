@@ -4,11 +4,11 @@ from View import View
 from Engine import Engine
 from Components import *
 
-cave = CaveRoom(1000, 1000, "this is a seed", 2)
-cave.carve_cave(1)
+cave = DbRoom(1000, 1000)
+cave.carve_perimeter()
 player = Entities.create_entity( Entities.load_entity('mobs', 'player'))
-player.coordinates.x = 10
-player.coordinates.y = 9
+player.coordinates.x = 500
+player.coordinates.y = 500
 player.input.accepts_input = True
 
 cave.room.entities.append(player)

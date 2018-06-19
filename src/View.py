@@ -18,7 +18,7 @@ class View:
                 try:
                     if current_cell in player_view:
                         cell = self.current_room.room[current_cell]
-                    else: cell = self.GenericTerrain.FLOOR.value
+                    else: cell = " "
                 except KeyError:
                     self.current_room.room[(view_x + x, view_y + y)] = self.GenericTerrain.WALL.value
                     cell = self.current_room.room[current_cell]

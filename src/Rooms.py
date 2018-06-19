@@ -20,7 +20,7 @@ class Room:
     def init_room(self):
         for x in range(self.width):
             for y in range(self.height):
-                self.room[(x, y)] = self.__return_random_tile()
+                self.room[(x, y)] = self.GenericTerrain.FLOOR.value
     def load_room(self, room_name):
         """loads room from pickle file"""
         roomfile = self.path.join('savedata', '{}.p'.format(room_name))
@@ -31,9 +31,21 @@ class Room:
         roomfile = self.path.join('savedata', '{}.p'.fomrat(room_name))
         self.pickle.dump(self.room, open(roomfile, 'wb'))
 
-class DbRoom(Room):
+class DbRoom:
+    from Terrain import GenericTerrain
     def __init__(self, width, height):
-        Room.__init__(self, width, height)
+        self.width = width
+        self.height = height
+        self.room = Room(self.width, self.height)
+        self.room.init_room()
+    
+    def carve_perimeter(self):
+        for x in range(self.width):
+            self.room.room[(x, 0)] = self.GenericTerrain.WALL.value
+            self.room.room[(x, self.height-1)] = self.GenericTerrain.WALL.value
+            for y in range(self.height):
+                self.room.room[(0, y)] = self.GenericTerrain.WALL.value
+                self.room.room[(self.width-1, y)] = self.GenericTerrain.WALL.value
 
 class CaveRoom:
     def __init__(self, width, height, usr_seed, erosion_rate):

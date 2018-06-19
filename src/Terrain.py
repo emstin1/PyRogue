@@ -1,7 +1,7 @@
 from enum import Enum
 #TODO:  make these not Enums (regular classes with variables)
 class GenericTerrain(Enum):
-    FLOOR = '[bkcolor=black] '
+    FLOOR = '.'
     WALL = '[color=grey][bkcolor=grey]#'
     FONT_FLOOR = ' '
     FONT_WALL = '#'
