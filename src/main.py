@@ -7,8 +7,8 @@ from Components import *
 cave = DbRoom(1000, 1000)
 cave.carve_perimeter()
 player = Entities.create_entity( Entities.load_entity('mobs', 'player'))
-player.coordinates.x = 500
-player.coordinates.y = 500
+player.coordinates.x = 25
+player.coordinates.y = 50
 player.input.accepts_input = True
 
 cave.room.entities.append(player)

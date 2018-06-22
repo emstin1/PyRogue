@@ -1,44 +1,34 @@
-def get_line(x0,y0, x1,y1):
-    """get_line(x0, y0, x1, y1)"""
-    line = []
-    negative_line = False
-    swapxy = abs(y1-y0) > abs(x1-x0)
-    if swapxy:
-        tmp = x0
-        x0 = y0
-        y0 = tmp
-        tmp = x1
-        x1 = y1
-        y1 = tmp
-    if x0 > x1:
-        tmp = x0
-        x0 = x1
-        x1 = tmp
-        tmp = y0
-        y0  = y1
-        y1  = tmp
-        negative_line = True
-    deltax = x1 - x0
-    deltay = round(abs(y1 - y0))
-    error = round(deltax / 2)
-    y = y0
-    if y0 < y1:
-        ystep = 1
-    else: ystep = -1
-    if swapxy:
-        for x in range(x0, x1+1):
-           line.append((x,y))
-           error -= deltay
-           if error < 0:
-              y = y + ystep
-              error = error + deltax
-    else:
-        for x in range(x0, x1 + 1):
-           line.append((x,y))
-           error -= deltay
-           if error < 0:
-              y = y + ystep
-              error = error + deltax
-    if negative_line:
-        line = line[::-1]
-    return line
+def get_line(x1,y1, x2,y2):
+    dx = x2 - x1
+    dy = y2 - y1
+
+    is_steep = abs(dy) > abs(dx)
+    
+    if is_steep:
+        x1, y1 = y1, x1
+        x2, y2 = y2, x2
+    swapped = False
+    if x1 > x2:
+        x1, x2 = x2, x1
+        y1, y2 = y2, y1
+        swapped = True
+
+    dx = x2 - x1
+    dy = y2 - y1
+
+    error = int(dx/2.0)
+    ystep = 1 if y1 < y2 else -1
+
+    y = y1
+    points = []
+    for x in range(x1, x2+1):
+        coord = (y, x) if is_steep else (x, y)
+        points.append(coord)
+        error -= abs(dy)
+        if error < 0:
+            y += ystep
+            error += dx
+
+    if swapped:
+        points.reverse()
+    return points

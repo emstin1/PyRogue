@@ -1,10 +1,11 @@
 from enum import Enum
 #TODO:  make these not Enums (regular classes with variables)
 class GenericTerrain(Enum):
-    FLOOR = '.'
+    FLOOR = '[bkcolor=black].'
     WALL = '[color=grey][bkcolor=grey]#'
     FONT_FLOOR = ' '
     FONT_WALL = '#'
+    BLANK = '[bkcolor=black] '
 
 class ForestTerrain(Enum):
     TREE  =  '[color=green]T'
