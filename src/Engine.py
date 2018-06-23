@@ -75,7 +75,6 @@ class Engine:
                 self.terminal.print(x, y, self.view.current_view[y][x])
         self.terminal.print(52, 0, "X: {}".format(self.player.coordinates.x))
         self.terminal.print(52, 1, "Y: {}".format(self.player.coordinates.y))
-        #self.terminal.print(int(self.view.width/2), int(self.view.height/2), "[color=red]@")
         self.terminal.refresh()
         self.set_state(self.States.TURN)
 

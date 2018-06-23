@@ -30,7 +30,7 @@ class InputSystem:
 
 
 class CollisionSystem:
-    from Terrain import GenericTerrain
+    import Tiles
 
     def __init__(self):
         self.entities = []
@@ -38,20 +38,20 @@ class CollisionSystem:
     def check_collision(self, current_room, entity):
         """checks if current desired move will cause collision and if so, stop the move"""
         if entity.movement.move_up:
-            if current_room[(entity.coordinates.x, entity.coordinates.y - 1)] == self.GenericTerrain.WALL.value:
+            if current_room[(entity.coordinates.x, entity.coordinates.y - 1)] == self.Tiles.WALL:
                 entity.movement.move_up = False
         elif entity.movement.move_down:
-            if current_room[(entity.coordinates.x, entity.coordinates.y + 1)] == self.GenericTerrain.WALL.value:
+            if current_room[(entity.coordinates.x, entity.coordinates.y + 1)] == self.Tiles.WALL:
                 entity.movement.move_down = False
         elif entity.movement.move_left:
-            if current_room[(entity.coordinates.x - 1, entity.coordinates.y)] == self.GenericTerrain.WALL.value:
+            if current_room[(entity.coordinates.x - 1, entity.coordinates.y)] == self.Tiles.WALL:
                 entity.movement.move_left = False
         elif entity.movement.move_right:
-            if current_room[(entity.coordinates.x + 1, entity.coordinates.y)] == self.GenericTerrain.WALL.value:
+            if current_room[(entity.coordinates.x + 1, entity.coordinates.y)] == self.Tiles.WALL:
                 entity.movement.move_right = False
 
 class VisionSystem:
-    from Terrain import GenericTerrain
+    import Tiles
     from Primitives import Shapes
     
     def __init__(self):
@@ -66,7 +66,7 @@ class VisionSystem:
         for ray in entity.vision.vision_circle:
             for point in ray:
                 try:
-                    if room[point] == self.GenericTerrain.WALL.value:
+                    if room[point] == self.Tiles.WALL:
                         entity.vision.visible_cells.append(point)
                         break
                     else:
