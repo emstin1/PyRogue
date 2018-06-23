@@ -1,5 +1,0 @@
-Engine uses states;  first state is draw, then pops an object off the turn stack (turn state) takes that objects.  After completion of turn,
-run update stae then loops back to the draw state
-
-Turn state:   if player, takes input, does action
-              if NPC, does action

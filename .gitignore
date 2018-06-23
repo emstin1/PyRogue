@@ -9,3 +9,4 @@ pip-selfcheck.json
 pyvenv.cfg
 pylinting.txt
 man/
+Dev-Notes/
