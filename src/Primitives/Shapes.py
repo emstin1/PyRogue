@@ -12,7 +12,7 @@ def draw_circle(origin_x, origin_y, x, y):
     points.append((origin_x + y, origin_y + x)) #bottom right sliver
     points.append((origin_x - y, origin_y + x)) #bottom left sliver
     points.append((origin_x + y, origin_y - x)) #top right sliver
-    points.append((origin_x - x, origin_y - x)) #top left line
+    points.append((origin_x - y, origin_y - x)) #top left line
     return points
 
 
