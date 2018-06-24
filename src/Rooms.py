@@ -1,9 +1,6 @@
 class Room:
     from Terrain import GenericTerrain
     import Tiles
-    from random import randint, seed
-    import pickle
-    from os import path
 
     def __init__(self, width, height):
         self.height = height
@@ -11,28 +8,13 @@ class Room:
         self.room = {}
         self.entities = []
 
-    def __return_random_tile(self):
-        val = self.randint(0,1)
-        if val == 0:
-            return self.GenericTerrain.FLOOR.value
-        elif val == 1:
-            return self.GenericTerrain.WALL.value
-
     def init_room(self):
         for x in range(self.width):
             for y in range(self.height):
                 self.room[(x, y)] = self.Tiles.FLOOR
-    def load_room(self, room_name):
-        """loads room from pickle file"""
-        roomfile = self.path.join('savedata', '{}.p'.format(room_name))
-        self.pickle.load(open(roomfile, 'rb'))
-
-    def save_room(self, room_name):
-        """saves room to pickle file"""
-        roomfile = self.path.join('savedata', '{}.p'.fomrat(room_name))
-        self.pickle.dump(self.room, open(roomfile, 'wb'))
 
 class DbRoom:
+    from Primitives import Line
     def __init__(self, width, height):
         self.width = width
         self.height = height
@@ -46,6 +28,11 @@ class DbRoom:
             for y in range(self.height):
                 self.room.room[(0, y)] = self.room.Tiles.WALL
                 self.room.room[(self.width-1, y)] = self.room.Tiles.WALL
+
+    def place_wall(self, start_x, start_y, end_x, end_y):
+        wall = self.Line.get_line(start_x, start_y, end_x, end_y)
+        for point in wall:
+            self.room.room[point] = self.room.Tiles.WALL
 
 class CaveRoom:
     def __init__(self, width, height, usr_seed, erosion_rate):

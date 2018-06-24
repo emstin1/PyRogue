@@ -10,6 +10,7 @@ player = Entities.create_entity( Entities.load_entity('mobs', 'player'))
 player.coordinates.x = 25
 player.coordinates.y = 50
 player.input.accepts_input = True
+cave.place_wall(10,10, 5, 10)
 
 cave.room.entities.append(player)
 
