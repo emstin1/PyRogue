@@ -1,4 +1,16 @@
 class Room:
+    from generation.map import Master
+    def __init__(self, room_type):
+        self.room_type = room_type
+        self.room = {}
+        self.entities = []
+        self.walker_master = self.Master.Master(self.room, self.room_type)
+
+    def init_room(self):
+        self.walker_master.add_walker((0,0))
+        self.walker_master.run()
+
+class TestRoom:
     from Terrain import GenericTerrain
     import Tiles
 
@@ -15,10 +27,11 @@ class Room:
 
 class DbRoom:
     from Primitives import Line
+    from Primitives import Shapes
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.room = Room(self.width, self.height)
+        self.room = TestRoom(self.width, self.height)
         self.room.init_room()
     
     def carve_perimeter(self):
@@ -34,13 +47,20 @@ class DbRoom:
         for point in wall:
             self.room.room[point] = self.room.Tiles.WALL
 
+    def place_room(self, length, width, origin_x, origin_y):
+        rect = self.Shapes.get_rect(length, width, origin_x, origin_y)
+        for point in rect:
+            self.room.room[point] = self.room.Tiles.WALL
+        door = rect[3]
+        self.room.room[door] = self.room.Tiles.FLOOR
+
 class CaveRoom:
     def __init__(self, width, height, usr_seed, erosion_rate):
         self.width = width
         self.height = height
         self.usr_seed = usr_seed
         self.erosion_rate = erosion_rate
-        self.room = Room(self.width, self.height)
+        self.room = TestRoom(self.width, self.height)
         self.room.seed(usr_seed)
         self.room.init_room()
 

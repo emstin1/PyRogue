@@ -1,3 +1,4 @@
+#TODO: turn temp_row.append(cell) into a list comprehension.  Should offer some speedup
 import pdb
 class View:
     from Terrain import GenericTerrain
@@ -5,7 +6,7 @@ class View:
     def __init__(self, current_room):
         self.current_room = current_room
         self.current_view = []
-        self.width = 50
+        self.width = 75
         self.height = 17
         self.int_to_tile = {self.Tiles.WALL: self.GenericTerrain.WALL.value, self.Tiles.FLOOR: self.GenericTerrain.FLOOR.value,
                             self.Tiles.BLANK: self.GenericTerrain.BLANK.value}

@@ -73,8 +73,8 @@ class Engine:
         for y in range(self.view.height):
             for x in range(self.view.width):
                 self.terminal.print(x, y, self.view.current_view[y][x])
-        self.terminal.print(52, 0, "X: {}".format(self.player.coordinates.x))
-        self.terminal.print(52, 1, "Y: {}".format(self.player.coordinates.y))
+        self.terminal.print(75, 0, "X: {}".format(self.player.coordinates.x))
+        self.terminal.print(75, 1, "Y: {}".format(self.player.coordinates.y))
         self.terminal.refresh()
         self.set_state(self.States.TURN)
 
