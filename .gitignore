@@ -10,3 +10,4 @@ pyvenv.cfg
 pylinting.txt
 man/
 Dev-Notes/
+main_proc.sh

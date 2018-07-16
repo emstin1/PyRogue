@@ -5,7 +5,7 @@ from View import View
 from Engine import Engine
 from Components import *
 
-cave = Room('slum')
+cave = Room('slum', 'this is a seed')
 cave.init_room()
 player = Entities.create_entity( Entities.load_entity('mobs', 'player'))
 player.coordinates.x = 0

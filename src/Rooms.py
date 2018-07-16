@@ -1,10 +1,11 @@
 class Room:
     from generation.map import Master
-    def __init__(self, room_type):
+    def __init__(self, room_type, seed):
         self.room_type = room_type
+        self.seed = seed
         self.room = {}
         self.entities = []
-        self.walker_master = self.Master.Master(self.room, self.room_type)
+        self.walker_master = self.Master.Master(self.room, self.room_type, self.seed)
 
     def init_room(self):
         self.walker_master.add_walker((0,0))

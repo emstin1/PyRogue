@@ -8,9 +8,11 @@ class Slum:
        current_pos = (x, y)
     """
 
-    def __init__(self, current_room, current_pos, life_timer=10):
+    def __init__(self, current_room, current_pos, seed, life_timer=30):
         self.current_room = current_room
         self.current_pos = current_pos
+        self.seed = seed
+        self.random.seed(seed)
         #TODO:adjust this as necessary
         self.life_timer = life_timer
         self.right = (1,0)
@@ -21,8 +23,8 @@ class Slum:
         self.current_direction = self.random.choice(self.directions)
         self.previous_pos = None
         #tune to taste
-        self.probability_to_stay_course = 96
-        self.breeding_chance = 25
+        self.probability_to_stay_course = 100
+        self.breeding_chance = 15
         self.carved_floor = []
 
     def breed(self):
@@ -55,6 +57,7 @@ class Slum:
     def hall_carve(self):
         walls = self.wall_carve()
         self.current_room[self.current_pos] = self.Tiles.FLOOR
+        #Prevents carving over previously carved floor
         self.carved_floor.append(self.current_pos)
         for wall in walls:
             if wall != self.previous_pos:
