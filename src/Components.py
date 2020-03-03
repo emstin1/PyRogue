@@ -1,3 +1,5 @@
+#TODO components need to be turned into pure data instead of python objects. 
+
 class ComponentMovement:
     """the movement component.  any entity with this component can move"""
     move_up    = False
